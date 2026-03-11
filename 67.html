@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>are u smart</title>
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+}
+
+h1{
+  margin-top:120px;
+}
+
+input{
+  font-size:25px;
+  padding:10px;
+}
+
+.num{
+  position:absolute;
+  font-size:40px;
+  font-weight:bold;
+  color:#00ffea;
+  animation: fly 3s linear forwards;
+}
+
+@keyframes fly{
+  0%{transform:scale(0); opacity:1;}
+  50%{transform:scale(2);}
+  100%{transform:translate(var(--x),var(--y)) scale(0.5); opacity:0;}
+}
+
+.shake{
+  animation: shake 0.4s infinite;
+}
+
+@keyframes shake{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-8px,8px)}
+  50%{transform:translate(8px,-8px)}
+  75%{transform:translate(-8px,-8px)}
+  100%{transform:translate(0,0)}
+}
+</style>
+</head>
+
+<body>
+
+<h1>45 + 22 = ?</h1>
+<input id="box" placeholder="answer">
+
+<script>
+let started = false
+
+document.getElementById("box").addEventListener("input",function(){
+
+if(this.value=="67" && !started){
+
+started=true
+
+document.body.classList.add("shake")
+
+setInterval(()=>{
+
+if(navigator.vibrate){
+navigator.vibrate(200)
+}
+
+for(let i=0;i<15;i++){
+
+let n=document.createElement("div")
+n.className="num"
+n.innerText="67"
+
+n.style.left=Math.random()*window.innerWidth+"px"
+n.style.top=Math.random()*window.innerHeight+"px"
+
+n.style.setProperty("--x",(Math.random()*800-400)+"px")
+n.style.setProperty("--y",(Math.random()*800-400)+"px")
+
+document.body.appendChild(n)
+
+setTimeout(()=>n.remove(),3000)
+
+}
+
+},300)
+
+}
+
+})
+</script>
+
+</body>
+</html>
