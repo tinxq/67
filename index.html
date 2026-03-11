@@ -22,18 +22,26 @@ text-align:center;
 }
 
 h1{
-font-size:35px;
+font-size:36px;
 margin-bottom:20px;
 }
 
+.inputBox{
+background:#111;
+padding:20px;
+border-radius:20px;
+border:3px solid #00ffff;
+box-shadow:0 0 20px #00ffff;
+}
+
 input{
-font-size:28px;
-padding:10px 15px;
-width:120px;
+font-size:32px;
+padding:15px;
+width:160px;
 text-align:center;
 border-radius:10px;
 border:none;
-border-color: beige;
+outline:none;
 }
 
 .num{
@@ -66,7 +74,10 @@ animation: shake 0.3s infinite;
 <body>
 
 <h1>45 + 22 = ?</h1>
+
+<div class="inputBox">
 <input id="box" placeholder="?">
+</div>
 
 <script>
 
