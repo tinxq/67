@@ -2,51 +2,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>are u smart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>67 Party</title>
 
 <style>
 body{
-  margin:0;
-  overflow:hidden;
-  background:black;
-  color:white;
-  font-family:Arial;
-  text-align:center;
+margin:0;
+overflow:hidden;
+background:black;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
 }
 
 h1{
-  margin-top:120px;
+font-size:35px;
+margin-bottom:20px;
 }
 
 input{
-  font-size:25px;
-  padding:10px;
+font-size:28px;
+padding:10px 15px;
+width:120px;
+text-align:center;
+border-radius:10px;
+border:none;
 }
 
 .num{
-  position:absolute;
-  font-size:40px;
-  font-weight:bold;
-  color:#00ffea;
-  animation: fly 3s linear forwards;
+position:absolute;
+font-size:40px;
+font-weight:bold;
+animation: fly 3s linear forwards;
 }
 
 @keyframes fly{
-  0%{transform:scale(0); opacity:1;}
-  50%{transform:scale(2);}
-  100%{transform:translate(var(--x),var(--y)) scale(0.5); opacity:0;}
+0%{transform:scale(0);opacity:1;}
+50%{transform:scale(2);}
+100%{transform:translate(var(--x),var(--y)) scale(0.5);opacity:0;}
 }
 
 .shake{
-  animation: shake 0.4s infinite;
+animation: shake 0.3s infinite;
 }
 
 @keyframes shake{
-  0%{transform:translate(0,0)}
-  25%{transform:translate(-8px,8px)}
-  50%{transform:translate(8px,-8px)}
-  75%{transform:translate(-8px,-8px)}
-  100%{transform:translate(0,0)}
+0%{transform:translate(0,0)}
+25%{transform:translate(-6px,6px)}
+50%{transform:translate(6px,-6px)}
+75%{transform:translate(-6px,-6px)}
+100%{transform:translate(0,0)}
 }
 </style>
 </head>
@@ -54,14 +65,21 @@ input{
 <body>
 
 <h1>45 + 22 = ?</h1>
-<input id="box" placeholder="answer">
+<input id="box" placeholder="?">
 
 <script>
-let started = false
+
+let started=false
+
+let colors=[
+"#ff0000","#00ff00","#00ffff","#ff00ff",
+"#ffff00","#ff8800","#00aaff","#ff66cc",
+"#66ff66","#ffffff"
+]
 
 document.getElementById("box").addEventListener("input",function(){
 
-if(this.value=="67" && !started){
+if(this.value==="67" && !started){
 
 started=true
 
@@ -70,14 +88,16 @@ document.body.classList.add("shake")
 setInterval(()=>{
 
 if(navigator.vibrate){
-navigator.vibrate(200)
+navigator.vibrate(150)
 }
 
-for(let i=0;i<15;i++){
+for(let i=0;i<20;i++){
 
 let n=document.createElement("div")
 n.className="num"
 n.innerText="67"
+
+n.style.color=colors[Math.floor(Math.random()*colors.length)]
 
 n.style.left=Math.random()*window.innerWidth+"px"
 n.style.top=Math.random()*window.innerHeight+"px"
@@ -91,11 +111,12 @@ setTimeout(()=>n.remove(),3000)
 
 }
 
-},300)
+},250)
 
 }
 
 })
+
 </script>
 
 </body>
